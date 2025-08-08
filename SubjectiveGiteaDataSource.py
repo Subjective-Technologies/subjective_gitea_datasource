@@ -75,17 +75,16 @@ class SubjectiveGiteaDataSource(SubjectiveDataSource):
 
     # ------------------ New Methods ------------------
     def get_icon(self):
-        """Return the SVG code for the Gitea icon."""
-        return """
-<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000" data-darkreader-inline-fill="" style="--darkreader-inline-fill: #000000;">
-  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-  <g id="SVGRepo_iconCarrier">
-    <circle cx="512" cy="512" r="512" style="fill: rgb(96, 153, 38); --darkreader-inline-fill: #a3da6b;" data-darkreader-inline-fill=""></circle>
-    <path fill="#fff" d="M762.2 350.3c-100.9 5.3-160.7 8-212 8.5v114.1l-16-7.9-.1-106.1c-58.9 0-110.7-3.1-209.1-8.6-12.3-.1-29.5-2.4-47.9-2.5-47.1-.1-110.2 33.5-106.7 118C175.8 597.6 296 609.9 344 610.9c5.3 24.7 61.8 110.1 103.6 114.6H631c109.9-8.2 192.3-373.8 131.2-375.2zM216.2 467.6c-4.7-36.6 11.8-74.8 73.2-73.2 53.9.8 64.8 40.3 86.8 100.7-56.2-7.4-104-25.7-112.8-94.3zM679 551.1c8.3-28.7 7.1-63.4-4-84.7-20.1-31.1-55.4-42.4-86.9-37.4z"/>
-  </g>
-</svg>
-        """
+        """Return SVG icon content, preferring a local icon.svg in the plugin folder."""
+        import os
+        icon_path = os.path.join(os.path.dirname(__file__), 'icon.svg')
+        try:
+            if os.path.exists(icon_path):
+                with open(icon_path, 'r', encoding='utf-8') as f:
+                    return f.read()
+        except Exception:
+            pass
+        return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#609926"/><path fill="#fff" d="M6 12h12v2H6z"/></svg>'
 
     def get_connection_data(self):
         """
