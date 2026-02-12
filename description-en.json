@@ -1,4 +1,5 @@
 {
+  "description": "Clones Gitea repositories into a target directory using API credentials and prepares source data for indexing.",
   "domainCategory": "Software Development",
   "subjectiveTechnologyElement": "DataSources",
   "publisher": "BrainBoost Ltd.",
@@ -9,7 +10,7 @@
     {
       "type": "splitList",
       "title": "Gitea",
-      "text": "A Subjective data source for gitea.",
+      "text": "Clones Gitea repositories into a target directory using API credentials and prepares source data for indexing.",
       "image": {
         "src": "/subjective_gitea_datasource/icon.svg",
         "alt": "Gitea icon"
